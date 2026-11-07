@@ -15,55 +15,31 @@ p { margin:0; }
 .lead, .note { color:var(--muted); font-size:14px; }
 .step { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; display:flex; flex-direction:column; gap:10px; }
 h2 { font-size:17px; margin:0; }
-a.btn, button.btn { font:inherit; font-weight:700; text-decoration:none; text-align:center; border:0; border-radius:8px; padding:12px 16px; min-height:48px; background:var(--accent); color:var(--on); display:block; cursor:pointer; }
-button.sub { font:inherit; font-size:14px; background:none; border:1px solid var(--line); color:var(--fg); border-radius:8px; padding:8px 12px; min-height:40px; cursor:pointer; }
+a.btn { font:inherit; font-weight:700; text-decoration:none; text-align:center; border-radius:8px; padding:14px 16px; min-height:52px; background:var(--accent); color:var(--on); display:block; }
 </style>
 </head>
 <body>
 <main>
   <h1>重複商品スッキリ</h1>
-  <p class="lead">楽天市場の検索結果で、同じ商品が何度も出るのを自動で消します(非公式)。Androidで、上から順にボタンを押してください。</p>
+  <p class="lead">楽天市場の検索結果で、同じ商品が何度も出るのを自動で消します(非公式)。Android用です。ボタンを上から順に押すだけです。</p>
 
   <section class="step">
-    <h2>1. Firefox を入れる</h2>
-    <a class="btn" href="https://play.google.com/store/apps/details?id=org.mozilla.firefox">Play ストアで開く</a>
-    <p class="note">「インストール」を押します。</p>
+    <h2>1. Tampermonkey を入れる</h2>
+    <a class="btn" href="intent://addons.mozilla.org/ja/android/addon/tampermonkey/#Intent;scheme=https;package=org.mozilla.firefox;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dorg.mozilla.firefox;end">押す</a>
+    <p class="note">Firefox が入っていないときは、Play ストアが開きます。「インストール」を押したあと、このページに戻って、もう一度このボタンを押してください。Firefox が開いたら、「Firefox に追加」を押します。</p>
   </section>
 
   <section class="step">
-    <h2>2. Tampermonkey を足す</h2>
-    <a class="btn" href="intent://addons.mozilla.org/ja/android/addon/tampermonkey/#Intent;scheme=https;package=org.mozilla.firefox;S.browser_fallback_url=https%3A%2F%2Faddons.mozilla.org%2Fja%2Fandroid%2Faddon%2Ftampermonkey%2F;end">Firefox で開く</a>
-    <p class="note">Firefox で「Firefox に追加」を押します。</p>
+    <h2>2. スクリプトを入れる</h2>
+    <a class="btn" href="intent://raw.githubusercontent.com/Takaysohi/dedupe-shopping-items/main/dedupe-shopping-items.user.js#Intent;scheme=https;package=org.mozilla.firefox;S.browser_fallback_url=https%3A%2F%2Fgithub.com%2FTakaysohi%2Fdedupe-shopping-items;end">押す</a>
+    <p class="note">Firefox が開いたら、「インストール」を押します。</p>
   </section>
 
   <section class="step">
-    <h2>3. スクリプトを入れる</h2>
-    <a class="btn" href="intent://raw.githubusercontent.com/Takaysohi/dedupe-shopping-items/main/dedupe-shopping-items.user.js#Intent;scheme=https;package=org.mozilla.firefox;S.browser_fallback_url=https%3A%2F%2Fgithub.com%2FTakaysohi%2Fdedupe-shopping-items;end">Firefox で開く</a>
-    <p class="note">Tampermonkey の画面で「インストール」を押します。</p>
-  </section>
-
-  <section class="step">
-    <h2>4. 楽天を開く</h2>
-    <a class="btn" href="intent://search.rakuten.co.jp/#Intent;scheme=https;package=org.mozilla.firefox;S.browser_fallback_url=https%3A%2F%2Fsearch.rakuten.co.jp%2F;end">Firefox で楽天市場を開く</a>
-    <p class="note">開いたあと、Firefox の「⋮」から「ホーム画面に追加」を選ぶと、アイコンから開けます。</p>
-  </section>
-
-  <section class="step">
-    <h2>ボタンが動かないとき</h2>
-    <p class="note">URLをコピーして、Firefox のアドレス欄に貼り付けてください。</p>
-    <button class="sub" type="button" data-copy="https://addons.mozilla.org/ja/android/addon/tampermonkey/">2 のURLをコピー</button>
-    <button class="sub" type="button" data-copy="https://raw.githubusercontent.com/Takaysohi/dedupe-shopping-items/main/dedupe-shopping-items.user.js">3 のURLをコピー</button>
-    <p class="note" id="msg" role="status"></p>
+    <h2>3. 楽天を開く</h2>
+    <a class="btn" href="intent://search.rakuten.co.jp/#Intent;scheme=https;package=org.mozilla.firefox;S.browser_fallback_url=https%3A%2F%2Fsearch.rakuten.co.jp%2F;end">押す</a>
+    <p class="note">次からは、Firefox で楽天を開くだけで使えます。</p>
   </section>
 </main>
-<script>
-document.querySelectorAll('[data-copy]').forEach(function (b) {
-  b.addEventListener('click', function () {
-    var u = b.getAttribute('data-copy'), m = document.getElementById('msg');
-    try { navigator.clipboard.writeText(u).then(function () { m.textContent = 'コピーしました'; }, function () { m.textContent = u; }); }
-    catch (e) { m.textContent = u; }
-  });
-});
-</script>
 </body>
 </html>
