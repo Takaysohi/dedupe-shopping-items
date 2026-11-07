@@ -4,6 +4,8 @@
 
 ## 入れ方(Android)
 
+**[ボタンで進める案内ページ](https://takaysohi.github.io/dedupe-shopping-items/)** を開くと、手順をボタンで進められます。手で進めるときは次のとおりです。
+
 1. **Firefox** を入れる: [Play ストア](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
 2. Firefox で **Tampermonkey** を追加する: [追加ページ](https://addons.mozilla.org/ja/android/addon/tampermonkey/)
 3. Firefox でこのページを開き、下のリンクをタップして「インストール」を押す
